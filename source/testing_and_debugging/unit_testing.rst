@@ -226,6 +226,9 @@ Complex example::
 
     ptc.setupPloneSite(products=['harvinaiset.app', 'TickingMachine'], extension_profiles=["harvinaiset.app:tests","harvinaiset.app:default"])
     
+.. note ::
+
+    Old-style products should be converted to Python eggs before use with testrunner.
 
 Tested package not found warning
 ---------------------------------
