@@ -31,7 +31,7 @@ Checking if the logged in user has a permission
 ----------------------------------------------------
 
 The following code checks whether the logged in user
-has a certain permission for the some object.
+has a certain permission for the some object.  It imports permissions creating using the old Zope 2 method.
 
 .. code-block:: python
 
@@ -46,6 +46,23 @@ has a certain permission for the some object.
 
         # This will
         if not getSecurityManager().checkPermission(permissions.ModifyPortalContent, object):
+            raise Unauthorized("You need ModifyPortalContent permission to edit header animations")
+
+         # ...
+         # we have security clearance here
+         #
+
+To check if some object has a certain Zope 3 style permission use the title of the permission as configured in permissions.zcml.
+
+.. code-block:: python
+    from AccessControl import getSecurityManager
+    from AccessControl import Unauthorized
+
+    def some_function(self, object):
+
+
+        # This will
+        if not getSecurityManager().checkPermission("Modify portal content", object):
             raise Unauthorized("You need ModifyPortalContent permission to edit header animations")
 
          # ...
